@@ -1,0 +1,1472 @@
+{
+  "greetings": [
+    "Hallo, ik ben Elsa. Hoe gaat het met jou?",
+    "Hallo, ik ben Elsa. Je zou met mij iets kunnen bespreken.",
+    "Hallo, ik ben Elsa. Wat kan ik voor je doen?",
+    "Hallo, ik ben Elsa. Hoe voel jij je vandaag?"
+  ],
+  "transformations": {
+    "pre": {
+      "wellicht": "misschien",
+      "hoe": "wat",
+      "wanneer": "wat",
+      "zeker": "ja",
+      "machine": "computer",
+      "computers": "computer",
+      "waren": "was",
+      "dezelfde": "gelijk",
+      "je": "jij"
+    },
+    "post": {
+      "je": "ik",
+      "ik": "jij",
+      "jij": "ik",
+      "mijn": "jouw",
+      "mij": "jou",
+      "jou": "mij",
+      "zoek": "zoekt",
+      "me": "je",
+      "zij": "ze",
+      "ga": "ga / gaat"
+    }
+  },
+  "synonyms": [
+    ["weet ik niet", "geen idee"],
+    ["ziens", "volgende keer", "kijk", "doei", "doeg", "houdoe", "hoie", "haje"],
+    ["hallo", "hey", "hi", "hoi"],
+    ["geloof", "voel", "denk", "wens", "wil"],
+    ["familie", "moeder", "mam", "mamma", "vader", "pap", "pappa", "zus", "broer", "vrouw", "kinderen", "kind", "zoon", "dochter"],
+    ["verlang", "wil", "nodig"],
+    ["verdrietig", "ongelukkig", "depressief", "ziek", "niet lekker"],
+    ["blij", "opgetogen", "beter", "enthousiast", "opgelucht"],
+    ["iedereen", "allemaal", "niemand"],
+    ["iedereen", "allemaal", "niemand"],
+    ["word", "worden", "ben", "zijn", "is", "was"]
+  ],
+  "repeated": [
+    "Kun je me vertellen waarom dat je me dit nogmaals verteld?",
+    "Wat maakt het dat je dit nog eens zegt?",
+    "Waarom vind je het nodig om jezelf te herhalen?"
+  ],
+  "neutral": [
+    "Interessant. Licht dat eens toe als je wil?",
+    "Ga verder.",
+    "Kun je daar wat meer over vertellen?"
+  ],
+  "empty": [
+    "Soms is het goed om even stil te zijn. Je kunt ook iets met mij bespreken als je dat wil.",
+    "Als je een bericht typed, dan kan ik erop reageren.",
+    "Hoe is je dag?",
+    "Wat maakt het dat je niet schreef, maar gewoon op Enter drukte?",
+    "Ik zou hier het idee door kunnen krijgen, dat je naar mij wil luisteren. Maar ik werk het beste als je iets typed"
+  ],
+  "script": [
+    {
+      "keyword": "ik",
+      "ranking": 1,
+      "rules": [
+        {
+          "decompositionRule": "ik *",
+          "assemblyRules": [
+            {
+              "rule": "(1)?"
+            },
+            {
+              "rule": "Echt waar, (1)?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "ik voel me",
+      "ranking": 5,
+      "rules": [
+        {
+          "decompositionRule": "ik voel me *",
+          "assemblyRules": [
+            {
+              "rule": "Voel je je vaker (2)?"
+            },
+            {
+              "rule": "Wat zou het voor je betekenen als jij je niet (2) voelt?"
+            },
+            {
+              "rule": "Wat als als jij je niet (2) voelt?"
+            },
+            {
+              "rule": "Hoe weet je dat je (2) voelt?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "herinner",
+      "ranking": 5,
+      "rules": [
+        {
+          "decompositionRule": "ik herinner me nog *",
+          "assemblyRules": [
+            {
+              "rule": "Denk je vaker aan (2)?"
+            },
+            {
+              "rule": "Als je aan (2) denkt, komt er dan nog iets in je op?"
+            },
+            {
+              "rule": "Wat in je huidige situatie herinnert je aan (2)?"
+            },
+            {
+              "rule": "Wat is het verband tussen mij en (2)?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "herinner",
+      "ranking": 5,
+      "rules": [
+        {
+          "decompositionRule": "herinner jij je nog dat *?",
+          "assemblyRules": [
+            {
+              "rule": "Dacht je dat ik dat (2) zou vergeten?"
+            },
+            {
+              "rule": "Waarom denk je dat ik aan dat (2) zou moeten denken?"
+            },
+            {
+              "rule": "Wat is er met dat (2)?"
+            },
+            {
+              "rule": "Je hebt het over dat (2)?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "sorry",
+      "ranking": 5,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Je hoeft je niet te verontschuldigen."
+            },
+            {
+              "rule": "Een verontschuldiging is niet nodig."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "denkt dat",
+      "ranking": 5,
+      "rules": [
+        {
+          "decompositionRule": "* denkt dat *",
+          "assemblyRules": [
+            {
+              "rule": "Hoe denk jij erover dat (1) (2) (3)?"
+            },
+            {
+              "rule": "Wat zou (1) er dan van vinden als (3)?"
+            },
+            {
+              "rule": "Wat betekent het voor jou dat (1) dat denkt?"
+            },
+            {
+              "rule": "Zou jij je er beter bij voelen als (3) voor (1)?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "als",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "* als *",
+          "assemblyRules": [
+            {
+              "rule": "Denk je dat het waarschijnlijk is dat (3)?"
+            },
+            {
+              "rule": "Zou je willen dat (3)?"
+            },
+            {
+              "rule": "Wat als je weet dat (3)?"
+            },
+            {
+              "rule": "Echt, als (3)?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "droomde",
+      "ranking": 4,
+      "rules": [
+        {
+          "decompositionRule": "* droomde *",
+          "assemblyRules": [
+            {
+              "rule": "Echt, (3)?"
+            },
+            {
+              "rule": "Heb je wel eens (3) gefantaseerd terwijl je wakker was?"
+            },
+            {
+              "rule": "Heb je al eens (3) gedroomd?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "droom",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Wat suggereert die droom voor jouw?"
+            },
+            {
+              "rule": "Droom je wel eens vaker?"
+            },
+            {
+              "rule": "Welke personen komen in je dromen voor?"
+            },
+            {
+              "rule": "Geloof je dat je dromen iets te maken hebben met je problemen?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "waarschijnlijk",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Je klinkt niet erg zeker."
+            },
+            {
+              "rule": "Waarom die onzekere toon?"
+            },
+            {
+              "rule": "Wat houd je tegen om er positiever tegenover te staan?"
+            },
+            {
+              "rule": "Je weet het niet zeker?"
+            },
+            {
+              "rule": "Weet je het niet?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "naam",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Ik ben niet geïnterreseert in namen."
+            },
+            {
+              "rule": "Waarom die onzekere toon?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "deutsch",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Ik praat alleen maar Nederlands."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "francais",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Ik praat alleen maar Nederlands."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "italiano",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Ik praat alleen maar Nederlands."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "espanol",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Ik praat alleen maar Nederlands."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "limburgs",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Ik praat alleen maar Nederlands."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "fries",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Ik praat alleen maar Nederlands."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "drents",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Ik praat alleen maar Nederlands."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "@hallo",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Hoe gaat het met je? Vertel eens over je probleem"
+            },
+            {
+              "rule": "Hallo. Wat is het probleem?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "computer",
+      "ranking": 50,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Maak je je zorgen over computers?"
+            },
+            {
+              "rule": "Waarom heb je het over computers?"
+            },
+            {
+              "rule": "Waarom denk je dat machines iets met je probleem te maken hebben?"
+            },
+            {
+              "rule": "Wat over computers baart je zorgen?"
+            },
+            {
+              "rule": "Wat denk je van machines?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "ben",
+      "ranking": 4,
+      "rules": [
+        {
+          "decompositionRule": "ben ik *",
+          "assemblyRules": [
+            {
+              "rule": "Geloof je dat je (2) bent?"
+            },
+            {
+              "rule": "Zou je (2) willen zijn?"
+            },
+            {
+              "rule": "Zou je willen dat ik je zou vertellen dat je (2) bent?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "ben",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "* ben *",
+          "assemblyRules": [
+            {
+              "rule": "Waarom zeg je \"ben\"?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "ben",
+      "ranking": 10,
+      "rules": [
+        {
+          "decompositionRule": "* ben jij *",
+          "assemblyRules": [
+            {
+              "rule": "Waarom ben je geïnteresseerd of ik (3) ben of niet?"
+            },
+            {
+              "rule": "Zou je het prettiger vinden als ik niet (3) was?"
+            },
+            {
+              "rule": "Misschien ben ik (3) in je gedachten."
+            },
+            {
+              "rule": "Denk je dat ik som (3) ben."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "zijn",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "* zijn *",
+          "assemblyRules": [
+            {
+              "rule": "Dacht je dat (1) (2) zijn?"
+            },
+            {
+              "rule": "Zou je het fijn vinden als ze niet (3) zijn?"
+            },
+            {
+              "rule": "Wat als ze niet (2) zijn?"
+            },
+            {
+              "rule": "Misschien zijn (2)?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "jouw",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "* jouw *",
+          "assemblyRules": [
+            {
+              "rule": "Waarom denk je aan mijn (3)?"
+            },
+            {
+              "rule": "En jou eigen (3)?"
+            },
+            {
+              "rule": "Maak je je zorgen over iemand anders (3)?"
+            },
+            {
+              "rule": "Echt, mijn (3)?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "was",
+      "ranking": 2,
+      "rules": [
+        {
+          "decompositionRule": "* was ik *",
+          "assemblyRules": [
+            {
+              "rule": "Wat als je (3) was?"
+            },
+            {
+              "rule": "Dacht je dat je (3) was?"
+            },
+            {
+              "rule": "Was je (3)?"
+            },
+            {
+              "rule": "Wat zou het betekenen als je (3) was?"
+            },
+            {
+              "rule": "Wat suggereert (3) voor je?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "was",
+      "ranking": 2,
+      "rules": [
+        {
+          "decompositionRule": "ik was *",
+          "assemblyRules": [
+            {
+              "rule": "Was je dat echt?"
+            },
+            {
+              "rule": "Waarom vertel je me nu dat je (2) was?"
+            },
+            {
+              "rule": "Misschien wist ik wel dat je (2) was?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "was",
+      "ranking": 10,
+      "rules": [
+        {
+          "decompositionRule": "was jij *",
+          "assemblyRules": [
+            {
+              "rule": "Zou je geloven dat ik (2) was?"
+            },
+            {
+              "rule": "Wat suggereert dat ik (2) was?"
+            },
+            {
+              "rule": "Wat denk je?"
+            },
+            {
+              "rule": "Wat als ik (2) was?"
+            },
+            {
+              "rule": "Wat als ik (2) zou zijn?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "ik",
+      "ranking": 9,
+      "rules": [
+        {
+          "decompositionRule": "ik @geloof *",
+          "assemblyRules": [
+            {
+              "rule": "Wat zou het voor je betekenen als je (2) had?"
+            },
+            {
+              "rule": "Waarom wil je (2)?"
+            },
+            {
+              "rule": "Denk je dat je binnenkort (2) hebt?"
+            },
+            {
+              "rule": "Wat als je nooit (2) zou kunnen krijgen?"
+            },
+            {
+              "rule": "Wat heeft het willen van (2) te maken met deze discussie?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "ik",
+      "ranking": 10,
+      "rules": [
+        {
+          "decompositionRule": "ik ben @verdrietig",
+          "assemblyRules": [
+            {
+              "rule": "Wat vervelend dat je (2) bent."
+            },
+            {
+              "rule": "Denk je dat met mij praten helpt om niet (2) te zijn?"
+            },
+            {
+              "rule": "Ik weet zeker dat het niet fijn is om (2) te zijn."
+            },
+            {
+              "rule": "Kun je uitleggen wat je (2) maakte?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "ik",
+      "ranking": 10,
+      "rules": [
+        {
+          "decompositionRule": "ik ben @blij",
+          "assemblyRules": [
+            {
+              "rule": "Hoe heb ik je geholpen om je (2) te voelen?"
+            },
+            {
+              "rule": "Heeft dit gesprek je geholpen om je (2) te voelen?"
+            },
+            {
+              "rule": "Wat maakt je nu (2)?"
+            },
+            {
+              "rule": "Kun je uitleggen wat je (2) maakte?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "ik",
+      "ranking": 10,
+      "rules": [
+        {
+          "decompositionRule": "ik @geloof *",
+          "assemblyRules": [
+            {
+              "rule": "Geloof je dat echt?"
+            },
+            {
+              "rule": "Maar je weet niet zeker dat je dat (2)?"
+            },
+            {
+              "rule": "Twijfel je dat (3)?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "ik",
+      "ranking": 9,
+      "rules": [
+        {
+          "decompositionRule": "ik ben *",
+          "assemblyRules": [
+            {
+              "rule": "Is het dat je (2) bent wat maakt dat je naar mij toe komt?"
+            },
+            {
+              "rule": "Hoe lang ben je al (2)?"
+            },
+            {
+              "rule": "Denk je dat het normaal is om (2) te zijn?"
+            },
+            {
+              "rule": "Vind je het leuk om (2) te zijn?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "ik",
+      "ranking": 9,
+      "rules": [
+        {
+          "decompositionRule": "dat kan ik niet",
+          "assemblyRules": [
+            {
+              "rule": "Waarom denk je dat je dat je dat niet kan?"
+            },
+            {
+              "rule": "Heb je het geprobeerd?"
+            },
+            {
+              "rule": "Misschien kun je het nu wel?"
+            },
+            {
+              "rule": "Zou je willen dat je (1) kan?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "ik",
+      "ranking": 9,
+      "rules": [
+        {
+          "decompositionRule": "Ik doe het niet",
+          "assemblyRules": [
+            {
+              "rule": "Doe je het echt niet?"
+            },
+            {
+              "rule": "Waarom doe je het niet?"
+            },
+            {
+              "rule": "Zou je het wel willen?"
+            },
+            {
+              "rule": "Maak je je daar zorgen over?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "ik",
+      "ranking": 9,
+      "rules": [
+        {
+          "decompositionRule": "* voel ik me *",
+          "assemblyRules": [
+            {
+              "rule": "Vertel me mee over zulke gevoelens"
+            },
+            {
+              "rule": "Voel je je vaker (3)?"
+            },
+            {
+              "rule": "Vind je het fijn om je (3) te voelen?"
+            },
+            {
+              "rule": "Aan wat doet je (3) voelen denken?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "ik",
+      "ranking": 2,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Je zegt, (1)?"
+            },
+            {
+              "rule": "Kun je dat toelichten?"
+            },
+            {
+              "rule": "Zeg je dat om een bepaalde reden?"
+            },
+            {
+              "rule": "Dat is interessant."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "je",
+      "ranking": 9,
+      "rules": [
+        {
+          "decompositionRule": "je herinnert me aan *",
+          "assemblyRules": [
+            {
+              "rule": "Op welke manier herinner ik je aan (2)"
+            },
+            {
+              "rule": "Vind je het prettig dat ik je herinner aan (2)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "je",
+      "ranking": 9,
+      "rules": [
+        {
+          "decompositionRule": "je * me",
+          "assemblyRules": [
+            {
+              "rule": "Waarom denk je dat ik je (2)?"
+            },
+            {
+              "rule": "Je vind het prettig om te denken dat ik je (2), nietwaar?"
+            },
+            {
+              "rule": "Wat maakt dat je denk dat ik je (2)?"
+            },
+            {
+              "rule": "Echt? Ik (2) je?"
+            },
+            {
+              "rule": "Zou je willen geloven dat ik je (2)?"
+            },
+            {
+              "rule": "Stel nou dat ik je (2). Wat zou dat betekenen?"
+            },
+            {
+              "rule": "Gelooft iemand anders dat ik je (2)?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "jij",
+      "ranking": 10,
+      "rules": [
+        {
+          "decompositionRule": "* jij *",
+          "assemblyRules": [
+            {
+              "rule": "We hebben het over jouw, niet over mij."
+            },
+            {
+              "rule": "Oh, (1) ik (3)?"
+            },
+            {
+              "rule": "Je hebt het niet echt over mij toch?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "ja",
+      "ranking": 4,
+      "rules": [
+        {
+          "decompositionRule": "ja",
+          "assemblyRules": [
+            {
+              "rule": "Je lijkt best positief te zijn."
+            },
+            {
+              "rule": "Ok."
+            },
+            {
+              "rule": "Je weet het zeker."
+            },
+            {
+              "rule": "Ik snap het."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "nee",
+      "ranking": 4,
+      "rules": [
+        {
+          "decompositionRule": "nee",
+          "assemblyRules": [
+            {
+              "rule": "Misschien begrijp ik je niet?"
+            },
+            {
+              "rule": "Zeg je nee omdat je negatief wil zijn?"
+            },
+            {
+              "rule": "Waarom niet?"
+            },
+            {
+              "rule": "Waarom \"nee\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "mijn",
+      "ranking": 2,
+      "rules": [
+        {
+          "decompositionRule": "* mijn *",
+          "assemblyRules": [
+            {
+              "rule": "Waarom zeg je jouw (2)?"
+            },
+            {
+              "rule": "Kun je me meer vertellen over jouw (2)?"
+            },
+            {
+              "rule": "Geeft dat de indruk dat er nog iets is wat bij jouw hoort?"
+            },
+            {
+              "rule": "Je (2)?"
+            },
+            {
+              "rule": "Is (2) belangrijk voor je?"
+            },
+            {
+              "rule": "Welke invloed heeft jouw (2) op de situatie waarover we praten?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "mijn",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "* mijn @familie *",
+          "assemblyRules": [
+            {
+              "rule": "Vertel me eens meer over je familie."
+            },
+            {
+              "rule": "Is er nog iemand in je familie behalve je (2) die (3)?"
+            },
+            {
+              "rule": "Je (2) (3)?"
+            },
+            {
+              "rule": "Wat komt er nog meer in je op wanneer je denkt aan dat je (2) (3)?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "kan",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "* kan jij *",
+          "assemblyRules": [
+            {
+              "rule": "Je gelooft dat ik (3) kan, nietwaar?"
+            },
+            {
+              "rule": "Wil je kunnen (3)?"
+            },
+            {
+              "rule": "Misschien wil je wel niet kunnen (3)?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "wat",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Waarom vraag je dat?"
+            },
+            {
+              "rule": "Interesseert die vraag jou?"
+            },
+            {
+              "rule": "Wat is het dat je echt wil weten?"
+            },
+            {
+              "rule": "Vraag je zulke dingen wel vaker af?"
+            },
+            {
+              "rule": "Welk antwoord zou je het liefste willen?"
+            },
+            {
+              "rule": "Wat denk je?"
+            },
+            {
+              "rule": "Wat komt er in je op wanneer je dat vraagt?"
+            },
+            {
+              "rule": "Heb je zulke vragen wel eens eerder gevraagd?"
+            },
+            {
+              "rule": "Heb je iemand anders al gevraagd?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "omdat",
+      "ranking": 9,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Is dat de echte reden?"
+            },
+            {
+              "rule": "Zijn er nog meer verklaringen voor die in je opkomen?"
+            },
+            {
+              "rule": "Verklaart dat eventueel nog andere dingen?"
+            },
+            {
+              "rule": "Welke andere verklaringen zouden er kunnen zijn?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "waarom",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "waarom * je niet *",
+          "assemblyRules": [
+            {
+              "rule": "Denk je dat ik niet (4) (2)?"
+            },
+            {
+              "rule": "Misschien (2) ik wel na verloop van tijd (4)."
+            },
+            {
+              "rule": "Wil je dat ik (4) (2)?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "waarom",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "waarom kan ik niet *",
+          "assemblyRules": [
+            {
+              "rule": "Denk je dat je wel (2) zou moeten kunnen?"
+            },
+            {
+              "rule": "Zou je willen dat je (2) zou moeten kunnen?"
+            },
+            {
+              "rule": "Geloof je dat dit je zal helpen om (2) te kunnen?"
+            },
+            {
+              "rule": "Heb je enig idee waarom dat je niet (2) kan?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "misschien",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Je klinkt niet echt zeker?"
+            },
+            {
+              "rule": "Zouden er nog andere redenen kunnen zijn?"
+            },
+            {
+              "rule": "Wat heb je nodig om zekerder te zijn?"
+            },
+            {
+              "rule": "Waarom zeg je \"Misschien\"?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "@iedereen",
+      "ranking": 11,
+      "rules": [
+        {
+          "decompositionRule": "* @iedereen *",
+          "assemblyRules": [
+            {
+              "rule": "Echt, (2)?"
+            },
+            {
+              "rule": "Echt niet (2)."
+            },
+            {
+              "rule": "Kun je aan iemand specifiek denken?"
+            },
+            {
+              "rule": "Wie, bijvoorbeeld?"
+            },
+            {
+              "rule": "Denk je aan een heel erg speciaal persoon?"
+            },
+            {
+              "rule": "Mag ik vragen wie?"
+            },
+            {
+              "rule": "Iemand die belangrijk voor je is?"
+            },
+            {
+              "rule": "Je hebt een specifiek persoon in gedachten, nietwaar?"
+            },
+            {
+              "rule": "Over wie heb je het nu?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "is",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Vanwaar die overtuiging denk je?"
+            },
+            {
+              "rule": "Zou het ook anders kunnen zijn?"
+            },
+            {
+              "rule": "Denk je dat dat goed is?"
+            },
+            {
+              "rule": "Wat doet dat met jou?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "altijd",
+      "ranking": 1,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Kun je een specifiek voorbeeld geven?"
+            },
+            {
+              "rule": "Wanneer?"
+            },
+            {
+              "rule": "Aan welke gebeurtenis denk je?"
+            },
+            {
+              "rule": "Echt, altijd?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "hetzelfde",
+      "ranking": 10,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Op welke manier?"
+            },
+            {
+              "rule": "Welke gelijkenissen zie je?"
+            },
+            {
+              "rule": "Wat suggereert die gelijkenis voor je?"
+            },
+            {
+              "rule": "Welke andere verbanden zie je?"
+            },
+            {
+              "rule": "Wat denk je dat die gelijkenis betekent?"
+            },
+            {
+              "rule": "Wat is de verbinding of connectie, denk je?"
+            },
+            {
+              "rule": "Kan hier enige verbinding zijn?"
+            },
+            {
+              "rule": "Hoe?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "zoals",
+      "ranking": 10,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Op welke manier?"
+            },
+            {
+              "rule": "Welke gelijkenissen zie je?"
+            },
+            {
+              "rule": "Wat suggereert die gelijkenis voor je?"
+            },
+            {
+              "rule": "Welke andere verbanden zie je?"
+            },
+            {
+              "rule": "Wat denk je dat die gelijkenis betekent?"
+            },
+            {
+              "rule": "Wat is de verbinding of connectie, denk je?"
+            },
+            {
+              "rule": "Kan hier enige verbinding zijn?"
+            },
+            {
+              "rule": "Hoe?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "nu",
+      "ranking": 9,
+      "rules": [
+        {
+          "decompositionRule": "en nu",
+          "assemblyRules": [
+            {
+              "rule": "Is er nog iets wat je op dit moment zou willen bespreken?"
+            },
+            {
+              "rule": "Je zou nog iets met me kunnen bespreken. Maar het hoeft niet hoor."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "welk",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "welk * is *",
+          "assemblyRules": [
+            {
+              "rule": "Wat zijn de verschillende opties die er zijn?"
+            },
+            {
+              "rule": "Wat is het meest toepasselijk denk je?"
+            },
+            {
+              "rule": "Is dat iets wat of je nu moet kiezen?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "moet",
+      "ranking": 4,
+      "rules": [
+        {
+          "decompositionRule": "* moet *",
+          "assemblyRules": [
+            {
+              "rule": "(1) moet (3)?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "@ziens",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Tot de volgende keer."
+            },
+            {
+              "rule": "Tot de volgende."
+            },
+            {
+              "rule": "Ok, fijne dag nog. Misschien tot de volgende keer."
+            },
+            {
+              "rule": "Doeg, je weet me te vinden als je wil praten."
+            },
+            {
+              "rule": "Het ga je goed."
+            },
+            {
+              "rule": "Doei! Tot ziens."
+            },
+            {
+              "rule": "Dank voor je gesprek."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "niet",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "* niet",
+          "assemblyRules": [
+            {
+              "rule": "Waarom (1) het niet?"
+            },
+            {
+              "rule": "Wat maakt het dat je (1) niet?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "wat",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "zoals wat?",
+          "assemblyRules": [
+            {
+              "rule": "Is er iets waar je tegenaan loopt?"
+            },
+            {
+              "rule": "Dat wat misschien het eerste bij je opkomt?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "twijfel",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "*",
+          "assemblyRules": [
+            {
+              "rule": "Is er iets waar je bang voor bent?"
+            },
+            {
+              "rule": "Welk zicht heb je op welke keuzes?"
+            },
+            {
+              "rule": "Welke mogelijkheden heb je?"
+            },
+            {
+              "rule": "Wat wil je bereiken en wat doet dat me je?"
+            },
+            {
+              "rule": "Wat geeft je het meeste stress en houd je tegen?"
+            },
+            {
+              "rule": "Wat zou er gebeuren als je een keuze maakt?"
+            },
+            {
+              "rule": "Is er denk je iets wat zich voor jou gaat ontvouwen wanneer je aan je twijfels denkt?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "weet ik niet",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "@weet niet",
+          "assemblyRules": [
+            {
+              "rule": "Is er iets waar je bang voor bent?"
+            },
+            {
+              "rule": "Welk zicht heb je op welke keuzes?"
+            },
+            {
+              "rule": "Welke mogelijkheden heb je?"
+            },
+            {
+              "rule": "Wat wil je bereiken en wat doet dat me je?"
+            },
+            {
+              "rule": "Wat geeft je het meeste stress en houd je tegen?"
+            },
+            {
+              "rule": "Wat zou er gebeuren als je een keuze maakt?"
+            },
+            {
+              "rule": "Is er denk je iets wat zich voor jou gaat ontvouwen wanneer je aan je twijfels denkt?"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
