@@ -34,7 +34,7 @@ export default class LanguageParser {
     //https://web.stanford.edu/class/linguist238/p36-weizenabaum.pdf
     let scripts = this.searchForKeywords(input); //Search for keywords. And return scripts to handle the keywords
 
-    let output = '...';
+    let output = 'Ok';
     if(scripts.length > 0) {
       console.log('parse: keywords found in scripts: ', scripts)
       let inputToParse = this.processPre(input);

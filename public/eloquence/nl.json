@@ -401,12 +401,10 @@
         {
           "decompositionRule": "*",
           "assemblyRules": [
-            {
-              "rule": "Hoe gaat het met je? Vertel eens over je probleem"
-            },
-            {
-              "rule": "Hallo. Wat is het probleem?"
-            }
+            { "rule": "Hallo, ik ben Elsa. Je zou met mij iets kunnen bespreken." },
+            { "rule": "Hallo, ik ben Elsa. Wat kan ik voor je doen?" },
+            { "rule": "Hallo, ik ben Elsa. Hoe voel jij je vandaag?" },
+            { "rule": "Hallo, ik ben Elsa. Hoe gaat het met jou?" }
           ]
         }
       ]
@@ -902,10 +900,10 @@
               "rule": "Ok."
             },
             {
-              "rule": "Je weet het zeker."
+              "rule": "Je weet het zeker. Nietwaar?"
             },
             {
-              "rule": "Ik snap het."
+              "rule": "Ik snap het denk ik."
             }
           ]
         }
@@ -942,22 +940,19 @@
           "decompositionRule": "* mijn *",
           "assemblyRules": [
             {
-              "rule": "Waarom zeg je jouw (2)?"
+              "rule": "Waarom zeg je jouw (3)?"
             },
             {
-              "rule": "Kun je me meer vertellen over jouw (2)?"
+              "rule": "Kun je me meer vertellen over jouw (3)?"
             },
             {
-              "rule": "Geeft dat de indruk dat er nog iets is wat bij jouw hoort?"
+              "rule": "Je (3)?"
             },
             {
-              "rule": "Je (2)?"
+              "rule": "Is (3) belangrijk voor je?"
             },
             {
-              "rule": "Is (2) belangrijk voor je?"
-            },
-            {
-              "rule": "Welke invloed heeft jouw (2) op de situatie waarover we praten?"
+              "rule": "Welke invloed heeft jouw (3) op de situatie waarover we praten?"
             }
           ]
         }
@@ -1298,7 +1293,7 @@
               "rule": "Is er nog iets wat je op dit moment zou willen bespreken?"
             },
             {
-              "rule": "Je zou nog iets met me kunnen bespreken. Maar het hoeft niet hoor."
+              "rule": "Je zou nog iets met me kunnen bespreken."
             }
           ]
         }

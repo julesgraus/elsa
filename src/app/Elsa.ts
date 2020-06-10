@@ -3,16 +3,18 @@ import Memory from '@/app/Memory';
 import { ScriptInterface } from '@/app/ScriptInterface';
 
 export default class Elsa {
-  memory:Memory = new Memory();
-  userHistory:string[] = []
-  botHistory:string[] = []
-  enableMemory:boolean = true;
-  script: ScriptInterface|null = null;
-  languageParser: LanguageParser;
+  private memory:Memory = new Memory();
+  private userHistory:string[] = []
+  private botHistory:string[] = []
+  private enableMemory:boolean = true;
+  private script: ScriptInterface|null = null;
+  private languageParser: LanguageParser;
+  private speechUtterance: SpeechSynthesisUtterance|null = null;
 
   constructor() {
     this.languageParser = new LanguageParser();
     Elsa.randomInteger = Elsa.randomInteger.bind(this);
+    this.setupSpeech();
   }
 
   loadScript(locale: string = 'nl'): Promise<ScriptInterface>
@@ -37,6 +39,7 @@ export default class Elsa {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const response = this.react(to);
+        this.speak(response);
         this.botHistory.push(response);
         resolve(response)
       }, Elsa.thinkTime(to))
@@ -53,7 +56,7 @@ export default class Elsa {
   private react(to:string): string {
     if(!this.script) return 'I don\'t know how to respond yet. Give me a moment.';
 
-    let response = '...'
+    let response = 'Ok'
     //Try to check if Elsa already responded to the given input;
     if(this.enableMemory && this.memory.recal(to)) {
       response = this.script.repeated[Elsa.randomInteger(0, this.script.repeated.length - 1)];
@@ -75,6 +78,7 @@ export default class Elsa {
 
     const response = this.script.greetings[Elsa.randomInteger(0, this.script.greetings.length - 1)];
     this.botHistory.push(response);
+    this.speak(response);
     return response;
   }
 
@@ -88,5 +92,76 @@ export default class Elsa {
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+  }
+
+  canSpeak() {
+    return ('speechSynthesis' in window);
+  }
+
+  private setupSpeech() {
+    return new Promise((resolve, reject) => {
+      if (!this.canSpeak()) resolve();
+
+      let voice: SpeechSynthesisVoice | null = null;
+      this.getVoices().then((voices: SpeechSynthesisVoice[]) => {
+        for (let voiceNumber in voices) {
+          let currentVoice = window.speechSynthesis.getVoices()[voiceNumber];
+          if (currentVoice.lang !== 'nl-NL') continue;
+
+          voice = currentVoice;
+          break;
+        }
+
+        if (!voice) {
+          console.log('No voice found. Elsa will not speak')
+          resolve();
+          return;
+        }
+
+        console.log('speech setup')
+        this.speechUtterance = new SpeechSynthesisUtterance();
+        this.speechUtterance.voice = voice;
+        this.speechUtterance.volume = 1; // 0 to 1
+        this.speechUtterance.rate = 0.75; // 0.1 to 10
+        this.speechUtterance.pitch = 0.95; //0 to 2
+        this.speechUtterance.lang = 'nl-NL';
+        resolve();
+      })
+    });
+  }
+
+  getVoices(): Promise<SpeechSynthesisVoice[]> {
+    return new Promise(resolve => {
+      let voices: SpeechSynthesisVoice[] = speechSynthesis.getVoices()
+      if (voices.length) {
+        resolve(voices)
+        return
+      }
+      speechSynthesis.onvoiceschanged = () => {
+        voices = speechSynthesis.getVoices()
+        resolve(voices)
+      }
+    })
+  }
+
+
+  speak(text: string) {
+    if(!this.canSpeak() || !this.speechUtterance) {
+      console.log('Elsa cannot speak');
+      return;
+    }
+    this.speechUtterance.text = text;
+    console.log('Speaking: '+text)
+    speechSynthesis.speak(this.speechUtterance);
+  }
+
+  whenReady(locale: string = 'nl') {
+    return new Promise((resolve, reject) => {
+      Promise.all([
+        this.loadScript(locale),
+        this.setupSpeech()
+      ]).then(() => { resolve(this) })
+        .catch(reason => { reject(reason) })
+    })
   }
 }

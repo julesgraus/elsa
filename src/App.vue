@@ -33,8 +33,14 @@ export default class App extends Vue {
 
   async mounted() {
     this.elsa = new Elsa();
-    this.elsa.loadScript('nl').then((script) => {
-      this.response = this.timestamp('Elsa', this.elsa.startConversation());
+
+    this.elsa.whenReady().then(() => {
+      this.response = ''
+        + this.timestamp('Website', '\n')
+        + this.timestamp('Website', 'Zeg maar eens Hallo. Dan neemt Elsa het vanzelf over.\n')
+        + this.timestamp('Website', 'Voor de best mogelijke antwoorden type je best niet te korte zinnen.\n')
+        + this.timestamp('Website', '\n')
+        + this.timestamp('Website', 'Welkom! Elsa is er klaar voor.\n')
     })
   }
 
