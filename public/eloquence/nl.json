@@ -1,8 +1,8 @@
 {
   "greetings": [
     "Hallo, ik ben Elsa. Hoe gaat het met jou?",
-    "Hallo, ik ben Elsa. Je zou met mij iets kunnen bespreken.",
-    "Hallo, ik ben Elsa. Wat kan ik voor je doen?",
+    "Hallo, ik ben Elsa. Waar denk je aan.",
+    "Hallo, ik ben Elsa. Vertel eens over je dag als je wilt?",
     "Hallo, ik ben Elsa. Hoe voel jij je vandaag?"
   ],
   "transformations": {
@@ -40,8 +40,9 @@
     ["verdrietig", "ongelukkig", "depressief", "ziek", "niet lekker"],
     ["blij", "opgetogen", "beter", "enthousiast", "opgelucht"],
     ["iedereen", "allemaal", "niemand"],
-    ["iedereen", "allemaal", "niemand"],
-    ["word", "worden", "ben", "zijn", "is", "was"]
+    ["word", "worden", "ben", "zijn", "is", "was"],
+    ["gek", "krankzinnig", "achterlijk", "dom", "stom"],
+    ["goed", "ok", "prima", "uitstekend"]
   ],
   "repeated": [
     "Kun je me vertellen waarom dat je me dit nogmaals verteld?",
@@ -80,7 +81,7 @@
     },
     {
       "keyword": "ik voel me",
-      "ranking": 5,
+      "ranking": 10,
       "rules": [
         {
           "decompositionRule": "ik voel me *",
@@ -96,6 +97,29 @@
             },
             {
               "rule": "Hoe weet je dat je (2) voelt?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "het voelt",
+      "ranking": 10,
+      "rules": [
+        {
+          "decompositionRule": "het voelt *",
+          "assemblyRules": [
+            {
+              "rule": "Voelt het vaker (2)"
+            },
+            {
+              "rule": "Wat zou het voor je betekenen als het niet (2) voelt?"
+            },
+            {
+              "rule": "Wat als het niet (2) voelt?"
+            },
+            {
+              "rule": "Hoe weet je dat het (2) voelt?"
             }
           ]
         }
@@ -493,6 +517,26 @@
       ]
     },
     {
+      "keyword": "had",
+      "ranking": 3,
+      "rules": [
+        {
+          "decompositionRule": "ik had *",
+          "assemblyRules": [
+            {
+              "rule": "Wat maakt het dat je (2) had?"
+            },
+            {
+              "rule": "Verwachte je dat je (2) had?"
+            },
+            {
+              "rule": "Je had (2), maar nu niet meer?"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "keyword": "zijn",
       "ranking": 3,
       "rules": [
@@ -500,16 +544,16 @@
           "decompositionRule": "* zijn *",
           "assemblyRules": [
             {
-              "rule": "Dacht je dat (1) (2) zijn?"
+              "rule": "Dacht je dat (3) zijn?"
             },
             {
               "rule": "Zou je het fijn vinden als ze niet (3) zijn?"
             },
             {
-              "rule": "Wat als ze niet (2) zijn?"
+              "rule": "Wat als ze niet (3) zijn?"
             },
             {
-              "rule": "Misschien zijn (2)?"
+              "rule": "Misschien zijn (3)?"
             }
           ]
         }
@@ -612,7 +656,7 @@
     },
     {
       "keyword": "ik",
-      "ranking": 9,
+      "ranking": 1,
       "rules": [
         {
           "decompositionRule": "ik @geloof *",
@@ -684,7 +728,7 @@
     },
     {
       "keyword": "ik",
-      "ranking": 10,
+      "ranking": 1,
       "rules": [
         {
           "decompositionRule": "ik @geloof *",
@@ -897,9 +941,6 @@
               "rule": "Je lijkt best positief te zijn."
             },
             {
-              "rule": "Ok."
-            },
-            {
               "rule": "Je weet het zeker. Nietwaar?"
             },
             {
@@ -1050,7 +1091,7 @@
               "rule": "Is dat de echte reden?"
             },
             {
-              "rule": "Zijn er nog meer verklaringen voor die in je opkomen?"
+              "rule": "Zijn er nog meer verklaringen voor, die in je opkomen?"
             },
             {
               "rule": "Verklaart dat eventueel nog andere dingen?"
@@ -1426,6 +1467,26 @@
             },
             {
               "rule": "Is er denk je iets wat zich voor jou gaat ontvouwen wanneer je aan je twijfels denkt?"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "keyword": "gaat",
+      "ranking": 10,
+      "rules": [
+        {
+          "decompositionRule": "* gaat @goed",
+          "assemblyRules": [
+            {
+              "rule": "Wat gaat goed?"
+            },
+            {
+              "rule": "Had je verwacht dat het niet (3) zou gaan?"
+            },
+            {
+              "rule": "Wat betekent het voor je dat het (3) gaat?"
             }
           ]
         }
